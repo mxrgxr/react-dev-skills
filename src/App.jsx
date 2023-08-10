@@ -1,5 +1,4 @@
-import './App.css';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SkillList from './SkillList';
 import NewSkillForm from './NewSkillForm';
 
@@ -12,12 +11,17 @@ const initialSkills = [
 
 export default function App() {
   const [skills, setSkills] = useState(initialSkills);
+
+  function addSkill(skill) {
+    setSkills([...skills, skill]);
+  }
+
   return (
     <div>
       <h1>React Dev Skills</h1>
       <SkillList skills={skills} />
       <hr />
-      <NewSkillForm />
+      <NewSkillForm addSkill={addSkill} />
     </div>
   );
 }
